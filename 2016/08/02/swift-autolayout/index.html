@@ -101,16 +101,30 @@
 </ol>
 <h2 id="Auto-Layout-Without-Constraints"><a href="#Auto-Layout-Without-Constraints" class="headerlink" title="Auto Layout Without Constraints"></a>Auto Layout Without Constraints</h2><p>首先介紹 Stack views 這個元件，一個 Stack views 中定義了”一行”或是”一列”的元素</p>
 <p>看你是用哪一種 Stack views（垂直或水平），Stack views 用下面屬性來排列裡面的元素（view）</p>
-<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/axis" target="_blank" rel="external">axis</a> 解釋為”軸” (UIStackView only)，此屬性定義 Stack views 的方向（垂直或水平）</p>
+<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/axis" target="_blank" rel="external">axis</a> (UIStackView only)，此屬性定義 Stack views 元素的方向（垂直或水平）</p>
 <p>orientation 解釋為方位 (NSStackView only)，定義 Stack views 的方向（垂直或水平）</p>
-<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/distribution" target="_blank" rel="external">distribution</a> 解釋為分配或部署，控制 Stack views 中的 view 如何擺放</p>
-<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/alignment" target="_blank" rel="external">alignment</a> 解釋為調準，控制 Stack views 中的 view 如何對其 Stack views</p>
-<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/spacing" target="_blank" rel="external">spacing</a> 解釋為間隔，定義 Stack views 中的 view 的間隔</p>
+<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/distribution" target="_blank" rel="external">distribution</a> 控制元素如何擺放，控制大小，也就是會改變寬高</p>
+<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/alignment" target="_blank" rel="external">alignment</a> 控制元素對其方式，大小不會動，也就是只會改變位置</p>
+<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/instp/UIStackView/spacing" target="_blank" rel="external">spacing</a> 定義 Stack views 中的 view 的間隔</p>
+<p>不同屬性顯示結果參考以下網址</p>
+<p><a href="http://mengxiangyue.com/2016/01/21/iOS9-by-Tutorials-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83%EF%BC%9AUIStackView-%E8%BF%9B%E9%98%B6/" target="_blank" rel="external">參考1</a></p>
+<p><a href="http://www.slideshare.net/bowdentom/uistackview-tom-bowden-dec-2015-eventacular-inc" target="_blank" rel="external">參考2</a></p>
+<p><a href="http://www.allaboutswift.com/dev/2016/5/14/stackviews-in-ios9" target="_blank" rel="external">參考3</a></p>
+<p><a href="http://www.techotopia.com/index.php/Working_with_the_iOS_9_Stack_View_Class" target="_blank" rel="external">參考4</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊紀錄一下網路上查到類別的 prefix 意義</span><br><span class="line">UI    : iOS 的 UI 庫，用 OBJ-C 封装的，用於普通的 view 或 controller</span><br><span class="line">        如 UIView、UIImageView、UITableViewController</span><br><span class="line">NS    : OBJ-C 的基礎庫，一般是用在數據類別 NSObject、NSString</span><br><span class="line">CG,CF : 底層 C 的庫，用於畫圖渲染，如 CGAffine</span><br></pre></td></tr></table></figure>
 <p>首先打開 Xcode 拉一個水平 stack view 到 canvas 當中，再拉 3 個按鈕進去 stack view</p>
 <p>接著到 Attributes inspector 設定 8-point spacing 和 Fills Equally distribution</p>
 <img src="/2016/08/02/swift-autolayout/160803-0001.png" alt="160803-0001.png" title="">
 <img src="/2016/08/02/swift-autolayout/160803-0002.png" alt="160803-0002.png" title="">
+<p>基本上建議使用 StackView，除非真的無法達成目標才用 constraints </p>
+<p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/doc/uid/TP40015256" target="_blank" rel="external">UIStackView 說明</a></p>
+<h2 id="Anatomy-of-a-Constraint"><a href="#Anatomy-of-a-Constraint" class="headerlink" title="Anatomy of a Constraint"></a>Anatomy of a Constraint</h2><p>現在我們可以開始分析 Constraint 的用法了</p>
+<p>你建立了許多 UI View，他們的位置大小其實就是一連串的”等式”組合</p>
+<p>每一個 Constraint 就代表一個”等式”，你的目標就是建立一連串的 Constraint 來建立你的 UI 位置</p>
+<p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/Art/view_formula_2x.png" target="_blank" rel="external"><img src="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/Art/view_formula_2x.png" alt="panel" title="panel"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Item 1 : 這裡指紅色 view，item 需要是一個 view 或 layout guide</span><br><span class="line">Attribute 1 : 紅色 view 的 leading edge 屬性</span><br><span class="line">Relationship : 可以為等於，大於等於，小於等於</span><br><span class="line">其他省略</span><br></pre></td></tr></table></figure>
+<p>大多數的 constraints 用在兩個 item 上面，例如上圖</p>
+<p>但你也可以用在同個 item 上的不同屬性，例如你可以設定某個 view 的長寬比率</p>
 
       
     </div>
