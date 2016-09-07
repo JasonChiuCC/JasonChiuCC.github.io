@@ -117,6 +117,9 @@
 <p>第一個參數是 ServiceUUID，如果你填 nil 那手機就會掃描所有可以用的外部設備</p>
 <p>你可以先把 ServiceUUID 當作是一個特定的設備 id，例如假設我們只想掃到 HM-10，不想掃到其他外部設備</p>
 <p>而 HM-10 預設的 ServiceUUID 是 0xFFE0，就可以改寫為</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let serviceUUID = [CBUUID(string: &quot;0xFFE0&quot;)]</span><br><span class="line"></span><br><span class="line">// 如果狀態為 PoweredOn，開啟 BLE 搜尋功能</span><br><span class="line">if cManager.state == CBCentralManagerState.PoweredOn &#123;</span><br><span class="line">    cManager.scanForPeripheralsWithServices(serviceUUID, options: nil)</span><br><span class="line">    UDebug.DLog(&quot;開始搜尋外部 BLE 裝置&quot;)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    UDebug.DLog(&quot;請先將手機藍牙打開&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>目前使用 UITableViewController 協定後，就不需要在寫 UITableViewDelegate, UITableViewDataSource</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(O) class BleTblVwCtrl: UITableViewController, UITableViewDelegate, UITableViewDataSource </span><br><span class="line">(X) class BleTblVwCtrl: UITableViewController</span><br></pre></td></tr></table></figure>
 
       
     </div>
