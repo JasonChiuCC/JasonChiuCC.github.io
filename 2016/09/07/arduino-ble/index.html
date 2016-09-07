@@ -99,7 +99,7 @@
 <p>一開始介紹兩個類別 CBCentralManager 和 CBCentralManagerDelegate</p>
 <p>CBCentralManager 管理手機 BLE 的連線狀態 </p>
 <p>CBCentralManagerDelegate 會負責監控手機 BLE 狀態是否發生改變</p>
-<p>以上說的 BLE 狀態是只手機端喔，不是指 HM-10 的狀態</p>
+<p>以上說的 BLE 狀態是指手機端喔，不是指 HM-10 的狀態</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> activeCentralManager : <span class="type">CBCentralManager</span>?</span><br><span class="line">...</span><br><span class="line">activeCentralManager    = <span class="type">CBCentralManager</span>(delegate: <span class="keyword">self</span>, queue: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
 <p>這邊把 delegate 設為自己，也就是說本身的 class 要繼承 CBCentralManagerDelegate</p>
 <p>並且實作 CBCentralManagerDelegate 裡面的方法，而此 Delegate 要實作的方法如下</p>
