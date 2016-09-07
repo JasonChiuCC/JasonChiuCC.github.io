@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>彙整：2016/5 | JasonChiuCC</title>
+  <title>IOS 連接 BLE+Arduino | JasonChiuCC</title>
   <meta name="author" content="JasonChiuCC">
   
   <meta name="description" content="JasonChiuCC">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="IOS 連接 BLE+Arduino"/>
   <meta property="og:site_name" content="JasonChiuCC"/>
 
   
@@ -47,97 +47,111 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2016/5</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-09-06T17:23:04.000Z"><a href="/2016/09/07/arduino-ble/">2016-09-07</a></time>
+      
+      
+  
+    <h1 class="title">IOS 連接 BLE+Arduino</h1>
+  
 
+    </header>
+    <div class="entry">
+      
+        <h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p><a href="http://www.books.com.tw/products/0010714135" target="_blank" rel="external">書籍參考</a></p>
+<p>IOS 主要使用 Core Bluetooth 框架來和藍芽裝置通訊，以下簡稱 CB</p>
+<p>目前 IOS 裝置可為接受和發送端，所以兩台 IOS 裝置可以互傳資料</p>
+<p>CB 分為：外接裝置（Peripheral = Server 端）和中心 (central = Client 端)</p>
+<p>在此處 Client = IOS 裝置(手機)，Server = 藍芽裝置(HM-10)</p>
+<p>當然目前手機也可當作 Server 端，一般來說是由外接裝置提供資料給 Server</p>
+<p>例如心跳器裝置傳資料給手機，當然手機也可以傳資料給外接裝置，之後會用到的方法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Rx (IOS裝置讀取外接裝置)</span><br><span class="line">func peripheral(peripheral: CBPeripheral?, didUpdateValueForCharacteristic characteristic: CBCharacteristic?, error: NSError!)</span><br><span class="line"></span><br><span class="line">// Tx (IOS裝置傳送外接裝置)</span><br><span class="line">func peripheralDevice.writeValue(data, forCharacteristic: deviceCharacteristics, type: CBCharacteristicWriteType.WithoutResponse)</span><br></pre></td></tr></table></figure>
+<p>中心讀取外接裝置的流程如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">設定 CBCentralManager -&gt; 發現外接 -&gt; 發現服務(CServer) -&gt; 發現特徵(CBCharateristic) -&gt; 訂閱特徵 -&gt; 讀取資料(Rx)</span><br></pre></td></tr></table></figure>
+<p>外接裝置的設定如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">設定 CBPeripheralManager -&gt; 設定服務與特徵 -&gt; 發布服務與特徵 -&gt; 廣播服務 -&gt; 發送資料</span><br></pre></td></tr></table></figure>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p><a href="https://www.arduino.cc/en/Guide/MacOSX?setlang=cn" target="_blank" rel="external">參考</a></p>
+<p><a href="http://rexstjohn.com/bluetooth-smart-ble-scanning-on-osx-xcode-6/" target="_blank" rel="external">參考</a></p>
+<p><a href="http://www.pondoudou.com/?p=2004" target="_blank" rel="external">參考</a></p>
+<p><a href="http://www.hangar42.nl/hm10" target="_blank" rel="external">參考</a></p>
+<p>如果找不到 port 按工具-&gt; Get board info 重抓</p>
+<h2 id="BLE-模組（HM-10-CC2541）"><a href="#BLE-模組（HM-10-CC2541）" class="headerlink" title="BLE 模組（HM-10 CC2541）"></a>BLE 模組（HM-10 CC2541）</h2><p><a href="http://www.instructables.com/files/orig/FNB/KL6A/I8FQVHZD/FNBKL6AI8FQVHZD.pdf" target="_blank" rel="external">DataSheet 英文</a></p>
+<p><a href="http://www.pondoudou.com/?download=2009" target="_blank" rel="external">DataSheet 中文</a></p>
+<p><a href="http://www.instructables.com/id/IPhone-to-Arduino-using-Bluetooth-40-/" target="_blank" rel="external">教學參考</a></p>
+<p>CC2541 是晶片的型號，由 Texas Instrument 公司開發</p>
+<p>HM-10 和 Arduino 接法如下 <a href="https://www.sunfounder.com/wiki/index.php?title=Bluetooth_4.0_HM-10_Master_Slave_Module" target="_blank" rel="external">參考</a></p>
+<img src="/2016/09/07/arduino-ble/160906-0001.png" alt="160906-0001.png" title="">
+<p>接好之後 HM-10 會閃爍紅燈，接著下載 App 測試是否能 Scan 到 HM-10</p>
+<p>可以去 Appstore 下載 Bluetooth Smart Scanner 來掃描看看</p>
+<p>要注意的是，上面 Arduino 的接法是直接接到 Arduino 板子上的 pin0(Rx) 和 pin1(Tx)</p>
+<p>這樣接法在上傳 Arduino 檔案時會有問題，會出現 arduino stk500_recv(): programmer is not responding</p>
+<p>記得先把 HM-10 Tx 和 Rx pin 拔掉再燒錄，或是改差 Arduino 的其他 pin (不使用 pin0 或 pin1 )</p>
+<h2 id="XCode-撰寫"><a href="#XCode-撰寫" class="headerlink" title="XCode 撰寫"></a>XCode 撰寫</h2><p><a href="http://cms.35g.tw/coding/%E8%97%8D%E7%89%99-ble-corebluetooth-%E5%88%9D%E6%8E%A2/" target="_blank" rel="external">參考</a></p>
+<p>手機使用外部 BLE 的流程是 Discover、Connect、Explore、Interact</p>
+<p><img src="http://cms.35g.tw/coding/wp-content/uploads/2014/03/BLE_FLOW1.png" alt="參考"></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>目前使用 UITableViewController 協定後，就不需要在寫 UITableViewDelegate, UITableViewDataSource</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(O) class BleTblVwCtrl: UITableViewController, UITableViewDelegate, UITableViewDataSource </span><br><span class="line">(X) class BleTblVwCtrl: UITableViewController</span><br></pre></td></tr></table></figure>
 
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-30T10:28:17.000Z"><a href="/2016/05/30/design-patterns-swift-1/">2016-05-30</a></time>
-            
-              <h1 class="title"><a href="/2016/05/30/design-patterns-swift-1/">設計模式 Swift（基本介紹）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-25T12:47:09.000Z"><a href="/2016/05/25/uboot-1/">2016-05-25</a></time>
-            
-              <h1 class="title"><a href="/2016/05/25/uboot-1/">U-Boot Boot（1）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-23T17:23:04.000Z"><a href="/2016/05/24/grammar-for-new-toeic-2/">2016-05-24</a></time>
-            
-              <h1 class="title"><a href="/2016/05/24/grammar-for-new-toeic-2/">Grammar For New TOEIC（2）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-23T13:35:38.000Z"><a href="/2016/05/23/grammar-for-new-toeic-1/">2016-05-23</a></time>
-            
-              <h1 class="title"><a href="/2016/05/23/grammar-for-new-toeic-1/">Grammar For New TOEIC（1）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-09T16:14:36.000Z"><a href="/2016/05/10/hexo-tutorial-2/">2016-05-10</a></time>
-            
-              <h1 class="title"><a href="/2016/05/10/hexo-tutorial-2/">Hexo 使用心得（2）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-09T00:00:00.000Z"><a href="/2016/05/09/hexo-tutorial-post-image/">2016-05-09</a></time>
-            
-              <h1 class="title"><a href="/2016/05/09/hexo-tutorial-post-image/">Hexo 貼圖教學</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-05T12:46:25.000Z"><a href="/2016/05/05/hexo-tutorial-1/">2016-05-05</a></time>
-            
-              <h1 class="title"><a href="/2016/05/05/hexo-tutorial-1/">Hexo 使用心得（1）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Swift/">Swift</a>, <a href="/categories/Swift/DesignPattern/">DesignPattern</a>
   </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/DP/">DP</a>, <a href="/tags/Swift/">Swift</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+    
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://jasonchiucc.github.io/2016/09/07/arduino-ble/index.html" data-num-posts="5" data-width="840" data-colorscheme="dark"></div>
+      
+  
+</section>
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
