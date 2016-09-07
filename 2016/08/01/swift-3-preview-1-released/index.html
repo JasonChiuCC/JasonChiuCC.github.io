@@ -65,9 +65,9 @@
       
         <h3 id="更改項目說明"><a href="#更改項目說明" class="headerlink" title="更改項目說明"></a>更改項目說明</h3><p><a href="https://swift.org/blog/swift-3-0-preview-1-released/" target="_blank" rel="external">官方文章</a></p>
 <p><a href="http://swiftdoc.org/v3.0/" target="_blank" rel="external">Swift API Doc</a></p>
-<a id="more"></a>
 <p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0002-remove-currying.md" target="_blank" rel="external">SE-0002: Removing currying func declaration syntax</a></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Before:</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">curried</span><span class="params">(x: Int)</span></span>(y: <span class="type">String</span>) -&gt; <span class="type">Float</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="type">Float</span>(x) + <span class="type">Float</span>(y)!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// After:</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">curried</span><span class="params">(x: Int)</span></span> -&gt; (<span class="type">String</span>) -&gt; <span class="type">Float</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;(y: <span class="type">String</span>) -&gt; <span class="type">Float</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> <span class="type">Float</span>(x) + <span class="type">Float</span>(y)!</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0003-remove-var-parameters.md" target="_blank" rel="external">SE-0003: Removing var from Function Parameters</a></p>
 <p>為了避免使用者混淆 inout 宣告，所以移除 Parameters var </p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doSomethingWithVar</span><span class="params">(<span class="keyword">var</span> i: Int)</span></span> &#123;</span><br><span class="line">  i = <span class="number">2</span> <span class="comment">// This will NOT have an effect on the caller's Int that was passed, but i can be modified locally</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doSomethingWithInout</span><span class="params">(<span class="keyword">inout</span> i: Int)</span></span> &#123;</span><br><span class="line">  i = <span class="number">2</span> <span class="comment">// This will have an effect on the caller's Int that was passed.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">doSomethingWithVar(x)</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">doSomethingWithInout(&amp;x)</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
@@ -229,11 +229,19 @@
 	
   
 	
+		<li><a href="/categories/Linux/">Linux</a><small>4</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/categories/Storage/Nand-Flash/">Nand-Flash</a><small>1</small></li>
      
   
 	
 		<li><a href="/categories/PHP/">PHP</a><small>2</small></li>
+	
+  
+	
+		<li><a href="/categories/Port/">Port</a><small>1</small></li>
 	
   
 	
@@ -249,7 +257,7 @@
 	
   
 	
-		<li><a href="/categories/TOEIC/">TOEIC</a><small>3</small></li>
+		<li><a href="/categories/TOEIC/">TOEIC</a><small>5</small></li>
 	
   
 	
@@ -260,7 +268,7 @@
 		<li><a href="/categories/XCode/">XCode</a><small>1</small></li>
 	
    -->
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Firebase/">Firebase</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firefox/">Firefox</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Composer/">Composer</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/">Storage</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/Nand-Flash/">Nand-Flash</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/AutoLayout/">AutoLayout</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/DesignPattern/">DesignPattern</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/Released/">Released</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOEIC/">TOEIC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/U-Boot/">U-Boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/XCode/">XCode</a><span class="category-list-count">1</span></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Firebase/">Firebase</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firefox/">Firefox</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Composer/">Composer</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Port/">Port</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/">Storage</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/Nand-Flash/">Nand-Flash</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/AutoLayout/">AutoLayout</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/DesignPattern/">DesignPattern</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/Released/">Released</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOEIC/">TOEIC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/U-Boot/">U-Boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/XCode/">XCode</a><span class="category-list-count">1</span></li></ul> 
 </div>
  
 
@@ -287,25 +295,35 @@
   
     <li><a href="/tags/Git/">Git</a><small>1</small></li>
   
-    <li><a href="/tags/Grammar/">Grammar</a><small>3</small></li>
+    <li><a href="/tags/Grammar/">Grammar</a><small>5</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/I2C/">I2C</a><small>1</small></li>
   
     <li><a href="/tags/Kernel/">Kernel</a><small>1</small></li>
   
     <li><a href="/tags/Laravel/">Laravel</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+  
+    <li><a href="/tags/Linux（Process）/">Linux（Process）</a><small>1</small></li>
   
     <li><a href="/tags/Nand-Flash/">Nand-Flash</a><small>1</small></li>
   
     <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
   
+    <li><a href="/tags/Port/">Port</a><small>1</small></li>
+  
+    <li><a href="/tags/Ram/">Ram</a><small>1</small></li>
+  
     <li><a href="/tags/RealtimeDatabase/">RealtimeDatabase</a><small>1</small></li>
+  
+    <li><a href="/tags/Semaphore/">Semaphore</a><small>1</small></li>
   
     <li><a href="/tags/Swift/">Swift</a><small>5</small></li>
   
-    <li><a href="/tags/TOEIC/">TOEIC</a><small>3</small></li>
+    <li><a href="/tags/TOEIC/">TOEIC</a><small>5</small></li>
   
     <li><a href="/tags/U-Boot/">U-Boot</a><small>1</small></li>
   

@@ -63,10 +63,7 @@
     </header>
     <div class="entry">
       
-        <h2 id="AutoLayout-說明"><a href="#AutoLayout-說明" class="headerlink" title="AutoLayout 說明"></a>AutoLayout 說明</h2><p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/" target="_blank" rel="external">官方教學文章</a></p>
-<p>此篇文章是閱讀官方 AutoLayout 心得，官方最後更新日期：2016-03-21</p>
-<a id="more"></a>
-<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><p>AutoLayout 可以動態計算所有的 view 物件的 <code>size(大小)</code> 和 <code>position(位置)</code></p>
+        <h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><p>AutoLayout 可以動態計算所有的 view 物件的 <code>size(大小)</code> 和 <code>position(位置)</code></p>
 <p>這是利用 <code>constraints</code> 這個功能，另外 AutoLayout 並非只能用在 App ，桌面程式一樣可以使用</p>
 <h2 id="外部改變（External-Changes）"><a href="#外部改變（External-Changes）" class="headerlink" title="外部改變（External Changes）"></a>外部改變（External Changes）</h2><p>當 superview 發生改變時，你需要調整你的 view 到適當的位置</p>
 <p>以下舉出幾點 superview 發生改變的例子</p>
@@ -75,6 +72,7 @@
 <p>● 當裝置旋轉時（例如手機直向或橫向）</p>
 <p>● 當 audio recording bars 出現或消失時 </p>
 <p>● 你想支援不同大小的螢幕或 size classes</p>
+<a id="more"></a>
 <h2 id="內部改變（Internal-Changes）"><a href="#內部改變（Internal-Changes）" class="headerlink" title="內部改變（Internal Changes）"></a>內部改變（Internal Changes）</h2><p>內部改變當然就是你 App 中介面的改變所影響的，舉幾個例子</p>
 <p>● 當顯示內容改變時</p>
 <p>● 當 App 支援多國語言，不同語言長度不一樣，可能導致需要空間不一樣，閱讀順序也會有差別</p>
@@ -125,6 +123,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Item 1 : 這裡指紅色 view，item 需要是一個 view 或 layout guide</span><br><span class="line">Attribute 1 : 紅色 view 的 leading edge 屬性</span><br><span class="line">Relationship : 可以為等於，大於等於，小於等於</span><br><span class="line">其他省略</span><br></pre></td></tr></table></figure>
 <p>大多數的 constraints 用在兩個 item 上面，例如上圖</p>
 <p>但你也可以用在同個 item 上的不同屬性，例如你可以設定某個 view 的長寬比率</p>
+<h2 id="AutoLayout-說明"><a href="#AutoLayout-說明" class="headerlink" title="AutoLayout 說明"></a>AutoLayout 說明</h2><p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/" target="_blank" rel="external">官方教學文章</a></p>
+<p>此篇文章是閱讀官方 AutoLayout 心得，官方最後更新日期：2016-03-21</p>
 
       
     </div>
@@ -227,11 +227,19 @@
 	
   
 	
+		<li><a href="/categories/Linux/">Linux</a><small>4</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/categories/Storage/Nand-Flash/">Nand-Flash</a><small>1</small></li>
      
   
 	
 		<li><a href="/categories/PHP/">PHP</a><small>2</small></li>
+	
+  
+	
+		<li><a href="/categories/Port/">Port</a><small>1</small></li>
 	
   
 	
@@ -247,7 +255,7 @@
 	
   
 	
-		<li><a href="/categories/TOEIC/">TOEIC</a><small>3</small></li>
+		<li><a href="/categories/TOEIC/">TOEIC</a><small>5</small></li>
 	
   
 	
@@ -258,7 +266,7 @@
 		<li><a href="/categories/XCode/">XCode</a><small>1</small></li>
 	
    -->
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Firebase/">Firebase</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firefox/">Firefox</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Composer/">Composer</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/">Storage</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/Nand-Flash/">Nand-Flash</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/AutoLayout/">AutoLayout</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/DesignPattern/">DesignPattern</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/Released/">Released</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOEIC/">TOEIC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/U-Boot/">U-Boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/XCode/">XCode</a><span class="category-list-count">1</span></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Firebase/">Firebase</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Firefox/">Firefox</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Composer/">Composer</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Port/">Port</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/">Storage</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Storage/Nand-Flash/">Nand-Flash</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/AutoLayout/">AutoLayout</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/DesignPattern/">DesignPattern</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/Released/">Released</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOEIC/">TOEIC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/U-Boot/">U-Boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/XCode/">XCode</a><span class="category-list-count">1</span></li></ul> 
 </div>
  
 
@@ -285,25 +293,35 @@
   
     <li><a href="/tags/Git/">Git</a><small>1</small></li>
   
-    <li><a href="/tags/Grammar/">Grammar</a><small>3</small></li>
+    <li><a href="/tags/Grammar/">Grammar</a><small>5</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/I2C/">I2C</a><small>1</small></li>
   
     <li><a href="/tags/Kernel/">Kernel</a><small>1</small></li>
   
     <li><a href="/tags/Laravel/">Laravel</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+  
+    <li><a href="/tags/Linux（Process）/">Linux（Process）</a><small>1</small></li>
   
     <li><a href="/tags/Nand-Flash/">Nand-Flash</a><small>1</small></li>
   
     <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
   
+    <li><a href="/tags/Port/">Port</a><small>1</small></li>
+  
+    <li><a href="/tags/Ram/">Ram</a><small>1</small></li>
+  
     <li><a href="/tags/RealtimeDatabase/">RealtimeDatabase</a><small>1</small></li>
+  
+    <li><a href="/tags/Semaphore/">Semaphore</a><small>1</small></li>
   
     <li><a href="/tags/Swift/">Swift</a><small>5</small></li>
   
-    <li><a href="/tags/TOEIC/">TOEIC</a><small>3</small></li>
+    <li><a href="/tags/TOEIC/">TOEIC</a><small>5</small></li>
   
     <li><a href="/tags/U-Boot/">U-Boot</a><small>1</small></li>
   
